@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}
+Interview | MockMate AI
+{% endblock %}
+
+{% block content %}
+
+<section class="interview-container">
+
+    <div class="interview-card">
+
+        <h1>Mock Interview</h1>
+
+        <div class="interview-info">
+
+            <p><strong>Role:</strong> {{ role }}</p>
+
+            <p>
+                <strong>Company:</strong>
+                {% if company %}
+                    {{ company }}
+                {% else %}
+                    General Interview
+                {% endif %}
+            </p>
+
+            <p><strong>Difficulty:</strong> {{ difficulty }}</p>
+
+            <p><strong>Duration:</strong> {{ duration }} Minutes</p>
+
+        </div>
+
+        <hr>
+
+        <!-- Question Counter -->
+
+        <h2>
+            Question {{ current_question }} of {{ total_questions }}
+        </h2>
+
+        <!-- Progress Bar -->
+
+        <div class="progress-bar">
+            <div 
+                class="progress-fill" id="progressFill">
+
+            </div>
+        </div>
+
+        <!-- AI Question -->
+
+        <div class="question-box">
+
+            <p>{{ question }}</p>
+
+        </div>
+
+        <!-- Answer Form -->
+
+        <form action="/next_question" method="POST">
+
+            <textarea
+                name="answer"
+                rows="8"
+                placeholder="Type your answer here..."
+                required></textarea>
+
+            <button
+                id="nextBtn"
+                type="submit"
+                class="primary">
+
+                {% if current_question == total_questions %}
+                    Finish Interview
+                {% else %}
+                    Next Question
+                {% endif %}
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<script>
+
+    // Set progress bar width
+    document.getElementById("progressFill").style.width = "{{ progress }}%";
+
+    // Loading animation
+    document.querySelector("form").addEventListener("submit", function(){
+
+        const btn = document.getElementById("nextBtn");
+
+        btn.innerHTML = "Generating...";
+
+        btn.disabled = true;
+
+    });
+
+</script>
+{% endblock %}

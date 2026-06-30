@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}
+Interview Report | MockMate AI
+{% endblock %}
+
+{% block content %}
+
+<section class="report-container">
+
+    <div class="report-card">
+
+        <h1>Interview Report</h1>
+
+        <div class="report-info">
+
+            <div class="info-item">
+                <strong>Role</strong>
+                <p>{{ role }}</p>
+            </div>
+
+            <div class="info-item">
+                <strong>Company</strong>
+                <p>
+                    {% if company %}
+                        {{ company }}
+                    {% else %}
+                        General Interview
+                    {% endif %}
+                </p>
+            </div>
+
+            <div class="info-item">
+                <strong>Difficulty</strong>
+                <p>{{ difficulty }}</p>
+            </div>
+
+            <div class="info-item">
+                <strong>Total Questions</strong>
+                <p>{{ total_questions }}</p>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="report-box">
+            {{ report|safe }}
+        </div>
+
+        <div class="report-buttons">
+
+            <a href="/setup">
+                <button class="primary">
+                    Start New Interview
+                </button>
+            </a>
+
+            <a href="/">
+                <button class="secondary">
+                    Back to Home
+                </button>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

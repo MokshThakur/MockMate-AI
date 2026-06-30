@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}
+Interview Setup
+{% endblock %}
+
+{% block content %}
+
+<section class="setup-container">
+
+    <div class="setup-card">
+
+        <h1>Prepare Your Interview</h1>
+
+        <form action="/interview" method="POST">
+
+            <label>Select Role</label>
+
+            <select name="role">
+
+                <option>AI/ML Engineer</option>
+                <option>Software Engineer</option>
+                <option>Web Developer</option>
+                <option>Data Analyst</option>
+                <option>Cybersecurity</option>
+
+            </select>
+
+            <label>Company (Optional)</label>
+
+            <input
+                type="text"
+                name="company"
+                placeholder="Leave blank for a general interview">
+
+            <h3>Difficulty</h3>
+
+            <div class="radio-group">
+
+                <label>
+                    <input type="radio" name="difficulty" value="Easy" required>
+                    Easy
+                </label>
+
+                <label>
+                    <input type="radio" name="difficulty" value="Medium">
+                    Medium
+                </label>
+
+                <label>
+                    <input type="radio" name="difficulty" value="Hard">
+                    Hard
+                </label>
+
+            </div>
+
+            <h3>Interview Duration</h3>
+
+            <div class="radio-group">
+
+                <label>
+                    <input type="radio" name="duration" value="15" required>
+                    15 Minutes
+                </label>
+
+                <label>
+                    <input type="radio" name="duration" value="30">
+                    30 Minutes
+                </label>
+
+                <label>
+                    <input type="radio" name="duration" value="45">
+                    45 Minutes
+                </label>
+
+            </div>
+
+            <button class="primary" type="submit">
+                Start Interview
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock %}
